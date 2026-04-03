@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おそうじ本舗 塩尻店 | お見積り依頼</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+      background: #eef4fb;
+      color: #333;
+      font-size: 14px;
+    }
+
+    /* Header */
+    .header {
+      background: #fff;
+      border-bottom: 3px solid #1a56a0;
+      padding: 10px 0;
+    }
+
+    .header-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      background: #1a56a0;
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      line-height: 1.3;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1a56a0;
+      letter-spacing: 0.05em;
+    }
+
+    .header-tel {
+      font-size: 11px;
+      color: #666;
+      text-align: right;
+    }
+
+    .header-tel strong {
+      font-size: 20px;
+      color: #1a56a0;
+      display: block;
+    }
+
+    /* Step nav */
+    .step-nav {
+      background: #fff;
+      border-bottom: 1px solid #dde6f0;
+    }
+
+    .step-nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .step-list {
+      display: flex;
+      list-style: none;
+    }
+
+    .step-list li {
+      flex: 1;
+      text-align: center;
+      padding: 10px 4px;
+      font-size: 12px;
+      color: #999;
+      border-bottom: 3px solid transparent;
+      cursor: default;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .step-list li.active {
+      color: #1a56a0;
+      border-bottom-color: #1a56a0;
+      font-weight: bold;
+    }
+
+    .step-list li.done {
+      color: #27ae60;
+      border-bottom-color: #27ae60;
+    }
+
+    .step-num {
+      display: inline-flex;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ccc;
+      color: #fff;
+      font-size: 10px;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .step-list li.active .step-num {
+      background: #1a56a0;
+    }
+
+    .step-list li.done .step-num {
+      background: #27ae60;
+    }
+
+    /* Main layout */
+    .main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    .page-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #1a56a0;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    /* Category tabs */
+    .cat-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #dde6f0;
+    }
+
+    .cat-tab {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1.5px solid #1a56a0;
+      color: #1a56a0;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #fff;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .cat-tab:hover,
+    .cat-tab.active {
+      background: #1a56a0;
+      color: #fff;
+    }
+
+    /* Two-column layout */
+    .layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .menu-col {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 10px;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1a56a0;
+      padding: 10px 14px;
+      background: #dce8f5;
+      border-left: 5px solid #1a56a0;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-title svg {
+      flex-shrink: 0;
+    }
+
+    /* Menu item card */
+    .menu-card {
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: box-shadow 0.15s;
+    }
+
+    .menu-card:hover {
+      box-shadow: 0 2px 8px rgba(26, 86, 160, 0.12);
+    }
+
+    .menu-icon {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+      background: #eef4fb;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .menu-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .menu-icon-placeholder {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #dce8f5 0%, #c5d8f0 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .menu-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .menu-name {
+      font-size: 13px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .menu-price-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .menu-price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1a56a0;
+    }
+
+    .menu-price-unit {
+      font-size: 11px;
+      color: #666;
+    }
+
+    .campaign-tag {
+      background: #e74c3c;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .menu-note {
+      font-size: 11px;
+      color: #888;
+      margin-top: 3px;
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .counter-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #1a56a0;
+      background: #fff;
+      color: #1a56a0;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: all 0.1s;
+    }
+
+    .counter-btn:hover:not(:disabled) {
+      background: #1a56a0;
+      color: #fff;
+    }
+
+    .counter-btn:disabled {
+      border-color: #ccc;
+      color: #ccc;
+      cursor: default;
+    }
+
+    .counter-val {
+      font-size: 16px;
+      font-weight: bold;
+      min-width: 24px;
+      text-align: center;
+      color: #333;
+    }
+
+    /* Sidebar cart */
+    .sidebar-box {
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-head {
+      background: #1a56a0;
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sidebar-body {
+      padding: 12px 14px;
+    }
+
+    .cart-count-badge {
+      background: #e74c3c;
+      color: #fff;
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .cart-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px dashed #eee;
+      font-size: 12px;
+    }
+
+    .cart-line:last-child {
+      border-bottom: none;
+    }
+
+    .cart-line-name {
+      color: #333;
+      flex: 1;
+      line-height: 1.4;
+    }
+
+    .cart-line-price {
+      color: #1a56a0;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .cart-empty {
+      color: #aaa;
+      font-size: 12px;
+      text-align: center;
+      padding: 16px 0;
+    }
+
+    .total-section {
+      border-top: 2px solid #1a56a0;
+      padding-top: 10px;
+      margin-top: 4px;
+    }
+
+    .total-row-s {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      padding: 3px 0;
+      color: #555;
+    }
+
+    .total-row-s.discount {
+      color: #e74c3c;
+    }
+
+    .total-row-s.grand {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1a56a0;
+      padding-top: 6px;
+      border-top: 1px solid #dde6f0;
+      margin-top: 4px;
+    }
+
+    .tax-note {
+      font-size: 10px;
+      color: #888;
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .btn-next {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s;
+      margin-top: 10px;
+    }
+
+    .btn-next:hover:not(:disabled) {
+      background: #c0392b;
+    }
+
+    .btn-next:disabled {
+      background: #ccc;
+      cursor: default;
+    }
+
+    .btn-back {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: #fff;
+      color: #1a56a0;
+      border: 1.5px solid #1a56a0;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+      margin-top: 8px;
+    }
+
+    .btn-back:hover {
+      background: #eef4fb;
+    }
+
+    /* Page 2: Cart review */
+    .cart-review-card {
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 14px;
+      position: relative;
+    }
+
+    .cart-review-img {
+      width: 80px;
+      height: 60px;
+      background: #eef4fb;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 28px;
+    }
+
+    .cart-review-info {
+      flex: 1;
+    }
+
+    .cart-review-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .cart-review-price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1a56a0;
+    }
+
+    .cart-review-price span {
+      font-size: 12px;
+      font-weight: normal;
+      color: #666;
+    }
+
+    .cart-review-counter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .remove-btn-cart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .remove-btn-cart:hover {
+      color: #e74c3c;
+    }
+
+    .cart-summary-box {
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 13px;
+    }
+
+    .summary-row:last-child {
+      border-bottom: none;
+    }
+
+    .summary-grand {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1a56a0;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0 0;
+      border-top: 2px solid #1a56a0;
+      margin-top: 6px;
+    }
+
+    .campaign-info-box {
+      background: #fff8f8;
+      border: 1px solid #f5c6c6;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .campaign-info-box strong {
+      color: #e74c3c;
+    }
+
+    /* Page 3: Form */
+    .form-section-title {
+      font-size: 15px;
+      font-weight: bold;
+      color: #1a56a0;
+      border-left: 4px solid #1a56a0;
+      padding-left: 10px;
+      margin: 20px 0 12px;
+    }
+
+    .form-row {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      font-size: 12px;
+      color: #333;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .req-badge {
+      background: #e74c3c;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .opt-badge {
+      background: #888;
+      color: #fff;
+      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid #ccd6e0;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #333;
+      background: #fff;
+      transition: border-color 0.15s;
+      font-family: inherit;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #1a56a0;
+    }
+
+    .form-input.error,
+    .form-select.error {
+      border-color: #e74c3c;
+    }
+
+    .error-msg {
+      color: #e74c3c;
+      font-size: 11px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    .form-row-inline {
+      display: flex;
+      gap: 10px;
+    }
+
+    .form-row-inline .form-input {
+      width: auto;
+      flex: 1;
+    }
+
+    .gender-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .gender-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .form-radio {
+      width: 18px;
+      height: 18px;
+      accent-color: #1a56a0;
+      cursor: pointer;
+    }
+
+    .form-check-wrap {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: #f8f9fa;
+      border: 1px solid #dde6f0;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+
+    .form-check {
+      width: 18px;
+      height: 18px;
+      accent-color: #1a56a0;
+      flex-shrink: 0;
+      margin-top: 1px;
+      cursor: pointer;
+    }
+
+    .check-label {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .policy-link {
+      color: #1a56a0;
+      text-decoration: underline;
+    }
+
+    .notice-box {
+      background: #fffbf0;
+      border: 1px solid #f5d88a;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto 10px;
+      padding: 16px;
+      background: #1a56a0;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background: #154280;
+    }
+
+    .btn-submit:disabled {
+      background: #aac0db;
+      cursor: default;
+    }
+
+    .btn-back-center {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 30px;
+      padding: 12px;
+      background: #fff;
+      color: #1a56a0;
+      border: 1.5px solid #1a56a0;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-back-center:hover {
+      background: #eef4fb;
+    }
+
+    /* Page 4: Confirm */
+    .confirm-box {
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .confirm-box-head {
+      background: #1a56a0;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .confirm-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .confirm-table th {
+      background: #eef4fb;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #555;
+      font-weight: normal;
+      text-align: left;
+      border-bottom: 1px solid #dde6f0;
+      width: 130px;
+      vertical-align: top;
+    }
+
+    .confirm-table td {
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #333;
+      border-bottom: 1px solid #dde6f0;
+    }
+
+    .confirm-table tr:last-child th,
+    .confirm-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Page 5: Complete */
+    .complete-wrap {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .complete-icon-big {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #27ae60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .complete-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1a56a0;
+      margin-bottom: 10px;
+    }
+
+    .complete-text {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .complete-summary {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto 30px;
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* Flow section */
+    .flow-section {
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .flow-title {
+      font-size: 15px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .flow-steps {
+      display: flex;
+      gap: 0;
+    }
+
+    .flow-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: '›';
+      position: absolute;
+      right: -8px;
+      top: 24px;
+      font-size: 24px;
+      color: #1a56a0;
+      font-weight: bold;
+    }
+
+    .flow-step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #1a56a0;
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .flow-step-text {
+      font-size: 11px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1a56a0;
+      color: #fff;
+      margin-top: 40px;
+    }
+
+    .footer-tel {
+      text-align: center;
+      padding: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-tel-num {
+      font-size: 36px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-tel-note {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+
+    .footer-bottom {
+      background: #0d3a78;
+      text-align: center;
+      padding: 12px;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px;
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+    }
+
+    /* Page visibility */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+      .step-list li {
+        font-size: 10px;
+        padding: 8px 2px;
+      }
+
+      .flow-steps {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .flow-step:not(:last-child)::after {
+        display: none;
+      }
+
+      .header-tel {
+        display: none;
+      }
+    }
+
+    /* Accordion styles */
+    .accordion-item {
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: background 0.15s;
+      user-select: none;
+    }
+    .accordion-header:hover { background: #f0f6ff; }
+    .accordion-header.open { background: #eef4fb; }
+    .accordion-toggle {
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      background: #1a56a0;
+      color: #fff;
+      font-size: 22px;
+      font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-left: auto;
+      transition: transform 0.2s;
+    }
+    .accordion-header.open .accordion-toggle { transform: rotate(45deg); }
+    .accordion-body { display: none; padding: 0 16px 16px; border-top: 1px solid #eef4fb; }
+    .accordion-body.open { display: block; }
+    .main-price-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 0 6px;
+    }
+    .main-price { font-size: 18px; font-weight: bold; color: #1a56a0; }
+    .main-price-unit { font-size: 12px; color: #666; }
+    .options-title {
+      font-size: 13px; font-weight: bold; color: #1a56a0;
+      border-left: 4px solid #1a56a0;
+      padding-left: 8px; margin: 12px 0 8px;
+    }
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    @media (max-width: 600px) { .option-grid { grid-template-columns: 1fr; } }
+    .option-card {
+      background: #f8fbff;
+      border: 1px solid #dde6f0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .option-info { flex: 1; }
+    .option-name { font-size: 12px; color: #333; margin-bottom: 3px; line-height: 1.4; }
+    .option-price { font-size: 14px; font-weight: bold; color: #1a56a0; }
+    .option-price-sub { font-size: 10px; color: #888; }
+    .option-consult { font-size: 12px; color: #1a56a0; font-weight: bold; }
+    .option-counter { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+    /* Sticky cart bar */
+    .sticky-cart {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(26,86,160,0.92);
+      backdrop-filter: blur(6px);
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 100;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.15);
+    }
+    .sticky-cart-info { color: #fff; font-size: 13px; }
+    .sticky-cart-total { font-size: 20px; font-weight: bold; color: #fff; }
+    .sticky-cart-btn {
+      background: #e74c3c; color: #fff;
+      border: none; border-radius: 6px;
+      padding: 12px 24px;
+      font-size: 14px; font-weight: bold;
+      cursor: pointer; display: flex; align-items: center; gap: 8px;
+    }
+    .sticky-cart-btn:disabled { background: #aaa; cursor: default; }
+    .sticky-cart-btn:not(:disabled):hover { background: #c0392b; }
+    .cat-icon-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 600px) { .cat-icon-grid { grid-template-columns: repeat(4, 1fr); } }
+    .cat-icon-btn {
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 10px;
+      padding: 12px 6px 8px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 11px;
+      color: #1a56a0;
+      font-weight: bold;
+      transition: all 0.15s;
+    }
+    .cat-icon-btn:hover, .cat-icon-btn.active { background: #1a56a0; color: #fff; }
+    .cat-icon-btn .ico { font-size: 24px; display: block; margin-bottom: 4px; }
+    /* Page 1 no sidebar - full width */
+    #page1 .layout { display: block; }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <div class="logo-mark">おそうじ<br>本舗</div>
+        <div>
+          <div class="logo-text">おそうじ本舗 塩尻店</div>
+          <div style="font-size:11px; color:#666;">プロじゃできない、きれいじゃまれる。</div>
+        </div>
+      </div>
+      <div class="header-tel">
+        <div>受付時間 9:00〜18:00（年末年始除く）</div>
+        <strong>0120-24-1000</strong>
+        <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:3px;">
+          <span style="background:#1a56a0;color:#fff;font-size:10px;padding:2px 6px;border-radius:3px;">携帯電話OK</span>
+          <span
+            style="background:#1a56a0;color:#fff;font-size:10px;padding:2px 6px;border-radius:3px;">全国共通フリーダイヤル</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step nav -->
+  <div class="step-nav">
+    <div class="step-nav-inner">
+      <ul class="step-list" id="step-list">
+        <li class="active" data-step="1"><span class="step-num">1</span> メニュー選択</li>
+        <li data-step="2"><span class="step-num">2</span> お客様情報</li>
+        <li data-step="3"><span class="step-num">3</span> 入力確認</li>
+        <li data-step="4"><span class="step-num">4</span> 完了</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- PAGE 1: Menu Selection -->
+    <div class="page active" id="page1">
+      <h1 class="page-title">おそうじ本舗　塩尻店 お見積り依頼</h1>
+      <p class="page-subtitle">ご希望のメニューを選択してお見積り確認ページへお進みください。</p>
+
+      <!-- Category icon grid -->
+      <div class="cat-icon-grid" id="cat-icon-grid">
+        <button class="cat-icon-btn active" onclick="scrollToSection('エアコン', this)"><span class="ico">❄️</span>エアコン</button>
+        <button class="cat-icon-btn" onclick="scrollToSection('パックサービス', this)"><span class="ico">📦</span>パックサービス</button>
+        <button class="cat-icon-btn" onclick="scrollToSection('水まわり', this)"><span class="ico">🚿</span>水まわり</button>
+        <button class="cat-icon-btn" onclick="scrollToSection('洗濯機', this)"><span class="ico">🫧</span>洗濯機</button>
+        <button class="cat-icon-btn" onclick="scrollToSection('キッチン', this)"><span class="ico">🍳</span>キッチン</button>
+        <button class="cat-icon-btn" onclick="scrollToSection('お部屋', this)"><span class="ico">🏠</span>お部屋</button>
+        <button class="cat-icon-btn" onclick="scrollToSection('コーティング', this)"><span class="ico">✨</span>コーティング</button>
+        <button class="cat-icon-btn" onclick="scrollToSection('その他', this)"><span class="ico">🔧</span>その他</button>
+      </div>
+
+      <!-- Menu column (full width, accordion) -->
+      <div id="menu-col"></div>
+
+      <!-- Flow section -->
+      <div class="flow-section" style="margin-top:20px; margin-bottom:80px;">
+        <div class="flow-title">お見積り後の流れ</div>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-step-num">STEP<br>01</div>
+            <div class="flow-step-text">確認メールの送付<br>お見積り依頼後、内容の確認メールをお客様にお届けします。</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-num">STEP<br>02</div>
+            <div class="flow-step-text">お電話によるご連絡・ご相談<br>ご依頼の内容を確認次第、おそうじ本舗よりご連絡をさせていただきます。</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-num">STEP<br>03</div>
+            <div class="flow-step-text">サービスの実施<br>決定した日時にスタッフがお伺いし、クリーニングを実施いたします。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <h1 class="page-title">おそうじ本舗 　塩尻店にお見積り</h1>
+      <p class="page-subtitle">ご希望のメニューを選んで右側の欄でページに進んで下さい。</p>
+
+      <!-- Category tabs -->
+      <div class="cat-tabs" id="cat-tabs">
+        <button class="cat-tab active" onclick="scrollToSection('エアコン', this)">エアコン</button>
+        <button class="cat-tab" onclick="scrollToSection('パックサービス', this)">パックサービス</button>
+        <button class="cat-tab" onclick="scrollToSection('水まわり', this)">水まわり</button>
+        <button class="cat-tab" onclick="scrollToSection('洗濯機', this)">洗濯機</button>
+        <button class="cat-tab" onclick="scrollToSection('キッチン', this)">キッチン</button>
+        <button class="cat-tab" onclick="scrollToSection('お部屋', this)">お部屋</button>
+        <button class="cat-tab" onclick="scrollToSection('コーティング', this)">コーティング</button>
+        <button class="cat-tab" onclick="scrollToSection('その他', this)">その他</button>
+      </div>
+
+
+
+    <!-- PAGE 2: Customer Info Form -->
+    <div class="page" id="page2">
+      <h1 class="page-title">お客様情報のご入力</h1>
+      <div class="notice-box">
+        ■ ハウスクリーニングをご希望の方<br>
+        ご登録いただいた後に、担当店舗よりご連絡をさせていただきます。
+      </div>
+
+      <div class="form-section-title">お名前</div>
+      <div class="form-row-inline">
+        <div class="form-row" style="flex:1;">
+          <label class="form-label">姓 <span class="req-badge">必須</span></label>
+          <input class="form-input" type="text" id="f-sei" placeholder="山田">
+          <div class="error-msg" id="err-sei">姓を入力してください</div>
+        </div>
+        <div class="form-row" style="flex:1;">
+          <label class="form-label">名 <span class="req-badge">必須</span></label>
+          <input class="form-input" type="text" id="f-mei" placeholder="太郎">
+          <div class="error-msg" id="err-mei">名を入力してください</div>
+        </div>
+      </div>
+      <div class="form-row-inline">
+        <div class="form-row" style="flex:1;">
+          <label class="form-label">姓（カタカナ）</label>
+          <input class="form-input" type="text" id="f-sei-kana" placeholder="ヤマダ">
+        </div>
+        <div class="form-row" style="flex:1;">
+          <label class="form-label">名（カタカナ）</label>
+          <input class="form-input" type="text" id="f-mei-kana" placeholder="タロウ">
+        </div>
+      </div>
+
+      <div class="form-section-title">性別</div>
+      <div class="form-row">
+        <div class="gender-group">
+          <label class="gender-label"><input class="form-radio" type="radio" name="gender" value="男性" checked>
+            男性</label>
+          <label class="gender-label"><input class="form-radio" type="radio" name="gender" value="女性"> 女性</label>
+        </div>
+      </div>
+
+      <div class="form-section-title">Eメールアドレス</div>
+      <div class="form-row">
+        <label class="form-label">Eメールアドレス <span class="req-badge">必須</span></label>
+        <input class="form-input" type="email" id="f-email" placeholder="xxxxx@sample.com">
+        <div class="error-msg" id="err-email">メールアドレスを入力してください</div>
+      </div>
+
+      <div class="form-section-title">電話番号</div>
+      <div class="form-row">
+        <label class="form-label">電話番号 <span class="req-badge">必須</span></label>
+        <div class="form-row-inline">
+          <input class="form-input" type="tel" id="f-tel1" placeholder="03" style="max-width:80px;">
+          <span style="line-height:38px;">−</span>
+          <input class="form-input" type="tel" id="f-tel2" placeholder="1234" style="max-width:100px;">
+          <span style="line-height:38px;">−</span>
+          <input class="form-input" type="tel" id="f-tel3" placeholder="5678" style="max-width:100px;">
+        </div>
+        <div class="error-msg" id="err-tel">電話番号を入力してください</div>
+      </div>
+
+      <div class="form-section-title">住所</div>
+      <div class="form-row">
+        <label class="form-label">郵便番号 <span class="req-badge">必須</span></label>
+        <div class="form-row-inline">
+          <input class="form-input" type="text" id="f-zip1" placeholder="〒 例）399" style="max-width:80px;">
+          <span style="line-height:38px;">−</span>
+          <input class="form-input" type="text" id="f-zip2" placeholder="6301" style="max-width:90px;">
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">都道府県 <span class="req-badge">必須</span></label>
+        <select class="form-select" id="f-pref" style="max-width:200px;">
+          <option value="">選択してください</option>
+          <option>北海道</option>
+          <option>青森県</option>
+          <option>岩手県</option>
+          <option>宮城県</option>
+          <option>秋田県</option>
+          <option>山形県</option>
+          <option>福島県</option>
+          <option>茨城県</option>
+          <option>栃木県</option>
+          <option>群馬県</option>
+          <option>埼玉県</option>
+          <option>千葉県</option>
+          <option>東京都</option>
+          <option>神奈川県</option>
+          <option>新潟県</option>
+          <option>富山県</option>
+          <option>石川県</option>
+          <option>福井県</option>
+          <option>山梨県</option>
+          <option selected>長野県</option>
+          <option>岐阜県</option>
+          <option>静岡県</option>
+          <option>愛知県</option>
+          <option>三重県</option>
+          <option>滋賀県</option>
+          <option>京都府</option>
+          <option>大阪府</option>
+          <option>兵庫県</option>
+          <option>奈良県</option>
+          <option>和歌山県</option>
+          <option>鳥取県</option>
+          <option>島根県</option>
+          <option>岡山県</option>
+          <option>広島県</option>
+          <option>山口県</option>
+          <option>徳島県</option>
+          <option>香川県</option>
+          <option>愛媛県</option>
+          <option>高知県</option>
+          <option>福岡県</option>
+          <option>佐賀県</option>
+          <option>長崎県</option>
+          <option>熊本県</option>
+          <option>大分県</option>
+          <option>宮崎県</option>
+          <option>鹿児島県</option>
+          <option>沖縄県</option>
+        </select>
+        <div class="error-msg" id="err-pref">都道府県を選択してください</div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">市区町村 <span class="req-badge">必須</span></label>
+        <input class="form-input" type="text" id="f-city" placeholder="塩尻市">
+        <div class="error-msg" id="err-city">市区町村を入力してください</div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">それ以降の住所（部屋番号含む）</label>
+        <input class="form-input" type="text" id="f-addr" placeholder="塩尻2-15-3">
+      </div>
+      <div class="form-row">
+        <label class="form-label">アパート・マンション名 <span class="opt-badge">任意</span></label>
+        <input class="form-input" type="text" id="f-apt" placeholder="品川インターシティ棟">
+      </div>
+
+      <div class="form-check-wrap" style="margin-top:6px;">
+        <input class="form-check" type="checkbox" id="f-diff-addr">
+        <label for="f-diff-addr"
+          class="check-label">上記のお客様情報に入力した住所とは別の住所でサービスを実施したい方は、左のボックスにチェックを入れてください。<br>【例】ハウスクリーニングのプレゼントなど</label>
+      </div>
+
+      <div class="form-section-title">ご希望日時</div>
+      <div class="form-row">
+        <label class="form-label">ご希望日 <span class="req-badge">必須</span></label>
+        <input class="form-input" type="date" id="f-date" style="max-width:220px;">
+        <div class="error-msg" id="err-date">ご希望日を選択してください</div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">ご希望時間帯 <span class="opt-badge">任意</span></label>
+        <select class="form-select" id="f-time" style="max-width:200px;">
+          <option value="">指定なし</option>
+          <option>午前中（9:00〜12:00）</option>
+          <option>午後（12:00〜15:00）</option>
+          <option>夕方（15:00〜18:00）</option>
+        </select>
+      </div>
+
+      <div class="form-section-title">おそうじ本舗のチラシをお持ちのお客様へ</div>
+      <div class="form-row">
+        <label class="form-label">店舗名</label>
+        <div class="form-row-inline">
+          <select class="form-select" id="f-shop" style="max-width:240px;">
+            <option value="">店舗名を選択してください</option>
+            <option>塩尻店</option>
+            <option>松本店</option>
+            <option>長野店</option>
+          </select>
+          <button
+            style="padding:8px 14px; border:1.5px solid #ccc; border-radius:6px; background:#fff; cursor:pointer; font-size:12px;"
+            onclick="document.getElementById('f-shop').value=''">クリア</button>
+        </div>
+      </div>
+
+      <div class="form-section-title">クーポンコード</div>
+      <div class="form-row">
+        <label class="form-label">クーポンコードをお持ちの方は以下にご入力ください。</label>
+        <input class="form-input" type="text" id="f-coupon" placeholder="XXXXXXXX" style="max-width:200px;">
+      </div>
+
+      <div class="form-section-title">備考</div>
+      <div class="form-row">
+        <label class="form-label">ご要望・ご不明点など <span class="opt-badge">任意</span></label>
+        <textarea class="form-textarea" id="f-note" rows="4" placeholder="ご自由にご記入ください"></textarea>
+      </div>
+
+      <div class="form-check-wrap">
+        <input class="form-check" type="checkbox" id="f-policy">
+        <label for="f-policy" class="check-label"><a class="policy-link" href="#"
+            onclick="return false;">プライバシーポリシー</a>についてよくご確認頂き、同意のうえチェックを入れ次にお進みください。</label>
+      </div>
+
+      <button class="btn-submit" id="submit-btn" onclick="goToConfirm()">ご入力内容をご確認に進む ›</button>
+      <button class="btn-back-center" onclick="goToPage(1)">メニュー選択に戻る ‹</button>
+    </div>
+
+    <!-- PAGE 3: Confirm -->
+    <div class="page" id="page3">
+      <h1 class="page-title">ご入力内容のご確認</h1>
+      <p class="page-subtitle" style="color:#e74c3c; font-weight:bold;">以下の内容でよろしければ「申込む」ボタンを押してください。</p>
+
+      <div class="confirm-box">
+        <div class="confirm-box-head">お客様情報</div>
+        <table class="confirm-table">
+          <tr>
+            <th>お名前</th>
+            <td id="c-name"></td>
+          </tr>
+          <tr>
+            <th>お名前（カタカナ）</th>
+            <td id="c-kana"></td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td id="c-gender"></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td id="c-email"></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td id="c-tel"></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td id="c-addr"></td>
+          </tr>
+          <tr>
+            <th>ご希望日時</th>
+            <td id="c-datetime"></td>
+          </tr>
+          <tr>
+            <th>備考</th>
+            <td id="c-note"></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="confirm-box">
+        <div class="confirm-box-head">ご依頼メニュー</div>
+        <div id="c-menu-items" style="padding:12px 16px;"></div>
+        <div style="padding:12px 16px; border-top:2px solid #1a56a0;">
+          <div class="summary-grand"><span>合計金額（税込）</span><span id="c-total"></span></div>
+        </div>
+      </div>
+
+      <p style="font-size:12px; color:#888; text-align:center; margin-bottom:20px;">
+        ※表示金額はお見積り額です。正式なお見積りは担当店舗よりご連絡いたします。</p>
+
+      <button class="btn-submit" onclick="submitForm()">お見積りを申し込む</button>
+      <button class="btn-back-center" onclick="goToPage(2)">修正する ‹</button>
+    </div>
+
+    <!-- PAGE 4: Complete -->
+    <div class="page" id="page4">
+      <div class="complete-wrap">
+        <div class="complete-icon-big">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12l5 5L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div class="complete-title">お見積りの申し込みが完了しました</div>
+        <div class="complete-text">
+          お見積り依頼いただきありがとうございます。<br>
+          担当店舗よりご連絡をさせていただきます。<br>
+          <br>
+          受付時間：9:00〜18:00（年末年始を除く）<br>
+          お問い合わせ：<strong style="color:#1a56a0;">0120-24-1000</strong>
+        </div>
+        <div class="complete-summary" id="complete-summary"></div>
+        <div class="flow-section" style="max-width:600px; margin:20px auto 0;">
+          <div class="flow-title">お見積り後の流れ</div>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <div class="flow-step-num">STEP<br>01</div>
+              <div class="flow-step-text">確認メールの送付</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-num">STEP<br>02</div>
+              <div class="flow-step-text">電話でのご連絡・ご相談</div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-step-num">STEP<br>03</div>
+              <div class="flow-step-text">サービスの実施</div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-submit" onclick="resetAll()" style="margin-top:30px; max-width:300px;">新しいお見積りを作成する</button>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-tel">
+      <div style="font-size:14px; margin-bottom:4px;">
+        <span
+          style="background:#e74c3c;padding:2px 10px;border-radius:3px;font-size:11px;margin-right:8px;">携帯電話OK</span>
+        <span style="background:#e74c3c;padding:2px 10px;border-radius:3px;font-size:11px;">全国共通フリーダイヤル</span>
+      </div>
+      <div class="footer-tel-num">☎ 0120-24-1000</div>
+      <div class="footer-tel-note">受付時間 9:00〜18:00（年中無休　※年末年始を除く）</div>
+    </div>
+    <div class="footer-links">
+      <a href="#">サイトのご利用にあたって</a>
+      <a href="#">企業情報</a>
+      <a href="#">プライバシーポリシー</a>
+    </div>
+    <div class="footer-bottom">© HITOWA Co., Ltd.</div>
+  </div>
+
+  <script>
+    const MENUS = [
+      {
+        cat: 'エアコン', icon: '❄️', items: [
+          {
+            id: 1, name: '壁掛けタイプエアコン（お掃除機能なし）', tax: 11000, unit: '台', campaign: true,
+            note: '2台以上 ¥9,900/台',
+            options: [
+              { id: 'o1_1', name: '完全分解洗浄', tax: 8800, unit: '台' },
+              { id: 'o1_2', name: '防カビチタンコーティング', tax: 3300, unit: '台' },
+              { id: 'o1_3', name: '室外機', tax: 5500, unit: '台' },
+              { id: 'o1_4', name: '防虫キャップ', tax: 1100, unit: '台' },
+              { id: 'o1_5', name: 'エコ洗浄', tax: 1100, unit: '台' },
+              { id: 'o1_6', name: 'スチーム除菌', tax: 1100, unit: '台' },
+              { id: 'o1_7', name: '空気清浄機クリーニング', tax: 9900, unit: '台' },
+              { id: 'o1_8', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o1_9', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+          {
+            id: 2, name: '壁掛けタイプエアコン（お掃除機能付き）', tax: 19800, unit: '台', campaign: true,
+            note: '通常¥20,900 → キャンペーン価格。2台以上 ¥18,700/台',
+            options: [
+              { id: 'o2_1', name: '完全分解洗浄', tax: 8800, unit: '台' },
+              { id: 'o2_2', name: '防カビチタンコーティング', tax: 3300, unit: '台' },
+              { id: 'o2_3', name: '室外機', tax: 5500, unit: '台' },
+              { id: 'o2_4', name: '防虫キャップ', tax: 1100, unit: '台' },
+              { id: 'o2_5', name: 'エコ洗浄', tax: 1100, unit: '台' },
+              { id: 'o2_6', name: 'スチーム除菌', tax: 1100, unit: '台' },
+              { id: 'o2_7', name: '空気清浄機クリーニング', tax: 9900, unit: '台' },
+              { id: 'o2_8', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o2_9', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+          {
+            id: 3, name: '天井埋め込みタイプエアコン', tax: 27500, unit: '台',
+            options: [
+              { id: 'o3_1', name: 'お掃除機能付き', tax: 8800, unit: '台' },
+              { id: 'o3_2', name: '4方向', tax: 0, unit: '台', consultation: true },
+              { id: 'o3_3', name: '防カビチタンコーティング', tax: 5500, unit: '台' },
+              { id: 'o3_4', name: '室外機', tax: 8800, unit: '台' },
+              { id: 'o3_5', name: 'エコ洗浄', tax: 3300, unit: '台' },
+              { id: 'o3_6', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o3_7', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+              { id: 'o3_8', name: '空気清浄機クリーニング', tax: 9900, unit: '台' },
+            ]
+          },
+        ]
+      },
+      {
+        cat: 'パックサービス', icon: '📦', items: [
+          {
+            id: 4, name: 'お引越し前・後まるごとクリーニング', tax: 23760, unit: '式', campaign: true,
+            note: 'マンション1K/1DK～。通常¥26,400 → キャンペーン価格',
+            options: [
+              { id: 'o4_1', name: '壁紙染色5㎡以下', tax: 5500, unit: '式' },
+              { id: 'o4_2', name: '壁紙染色10㎡以下', tax: 13200, unit: '式' },
+              { id: 'o4_3', name: 'フローリング洗浄ワックス（10帖以下）', tax: 13200, unit: '式' },
+              { id: 'o4_4', name: 'フローリング洗浄ワックス（追加1帖）', tax: 1320, unit: '帖' },
+              { id: 'o4_5', name: 'フローリングハクリ＆ワックス（10帖以下）', tax: 46200, unit: '式' },
+              { id: 'o4_6', name: 'フローリングハクリ＆ワックス（追加1帖）', tax: 4620, unit: '帖' },
+            ]
+          },
+          {
+            id: 5, name: '在宅まるごとクリーニング', tax: 31680, unit: '式', campaign: true,
+            note: 'マンション1K/1DK～。通常¥35,200 → キャンペーン価格',
+            options: [
+              { id: 'o5_1', name: '壁紙染色5㎡以下', tax: 5500, unit: '式' },
+              { id: 'o5_2', name: '壁紙染色10㎡以下', tax: 13200, unit: '式' },
+              { id: 'o5_3', name: 'フローリング洗浄ワックス（10帖以下）', tax: 13200, unit: '式' },
+              { id: 'o5_4', name: 'フローリング洗浄ワックス（追加1帖）', tax: 1320, unit: '帖' },
+              { id: 'o5_5', name: 'フローリングハクリ＆ワックス（10帖以下）', tax: 46200, unit: '式' },
+              { id: 'o5_6', name: 'フローリングハクリ＆ワックス（追加1帖）', tax: 4620, unit: '帖' },
+            ]
+          },
+        ]
+      },
+      {
+        cat: '水まわり', icon: '🚿', items: [
+          {
+            id: 6, name: '風呂・浴室クリーニング', tax: 19800, unit: '式',
+            options: [
+              { id: 'o6_1', name: 'お手入れ簡単コーティング', tax: 9900, unit: '式' },
+              { id: 'o6_2', name: '鏡の水アカ除去＆曇り止めフィルム仕上げ', tax: 5500, unit: '式' },
+              { id: 'o6_3', name: '浴室乾燥機クリーニング', tax: 7700, unit: '台' },
+              { id: 'o6_4', name: '特殊汚れ/追加範囲（0.5㎡ごと）', tax: 3300, unit: '式' },
+              { id: 'o6_5', name: '浴室（風呂釜）追い焚き配管除菌クリーニング', tax: 22000, unit: '式' },
+              { id: 'o6_6', name: '浴室防カビコート（1坪以上/タイル壁）', tax: 5500, unit: '式' },
+              { id: 'o6_7', name: '浴室防カビコート', tax: 3300, unit: '式' },
+              { id: 'o6_8', name: 'エプロン内部高圧洗浄＆防カビ仕上げ', tax: 7700, unit: '式' },
+              { id: 'o6_9', name: 'エプロン内部洗浄', tax: 3300, unit: '式' },
+              { id: 'o6_10', name: '鏡の水アカ除去＆コーティング仕上げ', tax: 3300, unit: '式' },
+              { id: 'o6_11', name: '1坪(3.3㎡)以上の場合（1㎡ごと）', tax: 3300, unit: '㎡' },
+              { id: 'o6_12', name: '洗面台クリーニングセット', tax: 8250, unit: '式' },
+              { id: 'o6_13', name: '空気清浄機クリーニング', tax: 9900, unit: '台' },
+              { id: 'o6_14', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o6_15', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+          {
+            id: 7, name: '浴室（風呂釜）の追い焚き配管除菌クリーニング', tax: 22000, unit: '式'
+          },
+          {
+            id: 8, name: 'ウルル消毒サービス', tax: 11000, unit: '式'
+          },
+          {
+            id: 9, name: '浴室乾燥機クリーニング', tax: 7700, unit: '台'
+          },
+          {
+            id: 10, name: 'トイレクリーニング', tax: 9900, unit: '式',
+            options: [
+              { id: 'o10_1', name: 'お手入れ簡単コーティング', tax: 5500, unit: '式' },
+              { id: 'o10_2', name: 'トイレ換気扇クリーニング', tax: 3300, unit: '台' },
+              { id: 'o10_3', name: '便器追加', tax: 5500, unit: '台' },
+              { id: 'o10_4', name: '特殊汚れ/追加範囲（0.5㎡ごと）', tax: 3300, unit: '式' },
+              { id: 'o10_5', name: '床ワックス塗布', tax: 1100, unit: '式' },
+              { id: 'o10_6', name: '壁紙染色10㎡以下', tax: 13200, unit: '式' },
+              { id: 'o10_7', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o10_8', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+          {
+            id: 11, name: '洗面台クリーニング', tax: 9900, unit: '式',
+            options: [
+              { id: 'o11_1', name: 'お手入れ簡単コーティング', tax: 3300, unit: '式' },
+              { id: 'o11_2', name: '洗面台鏡の水アカ除去＆曇り止めコーティング', tax: 3300, unit: '式' },
+              { id: 'o11_3', name: '特殊汚れ/追加範囲（0.5㎡ごと）', tax: 3300, unit: '式' },
+              { id: 'o11_4', name: '洗面台収納扉クリーニング', tax: 3300, unit: '式' },
+              { id: 'o11_5', name: '洗面所換気扇クリーニング', tax: 3300, unit: '台' },
+              { id: 'o11_6', name: '床ワックス塗布', tax: 1100, unit: '式' },
+              { id: 'o11_7', name: '壁紙染色10㎡以下', tax: 13200, unit: '式' },
+              { id: 'o11_8', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o11_9', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+        ]
+      },
+      {
+        cat: '洗濯機', icon: '🫧', items: [
+          {
+            id: 12, name: '縦型洗濯機クリーニング', tax: 12100, unit: '台',
+            options: [
+              { id: 'o12_1', name: '完全分解洗浄', tax: 11000, unit: '台' },
+              { id: 'o12_2', name: '日立製', tax: 5500, unit: '台' },
+              { id: 'o12_3', name: '空気清浄機クリーニング', tax: 9900, unit: '台' },
+              { id: 'o12_4', name: '洗濯パン', tax: 2200, unit: '台' },
+              { id: 'o12_5', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o12_6', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+          {
+            id: 13, name: 'ドラム式洗濯機クリーニング', tax: 18700, unit: '台',
+            options: [
+              { id: 'o13_1', name: '空気清浄機クリーニング', tax: 9900, unit: '台' },
+              { id: 'o13_2', name: '洗濯パン', tax: 2200, unit: '台' },
+              { id: 'o13_3', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o13_4', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+          {
+            id: 14, name: 'ドラム式乾燥機能分解クリーニング（一部機種限定）', tax: 33000, unit: '台',
+            options: [
+              { id: 'o14_1', name: '完全分解洗浄', tax: 19800, unit: '台' },
+              { id: 'o14_2', name: '洗濯パン', tax: 2200, unit: '台' },
+              { id: 'o14_3', name: 'かさ上げ台設置', tax: 9900, unit: '台' },
+              { id: 'o14_4', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o14_5', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+              { id: 'o14_6', name: '空気清浄機クリーニング', tax: 9900, unit: '台' },
+            ]
+          },
+        ]
+      },
+      {
+        cat: 'キッチン', icon: '🍳', items: [
+          {
+            id: 15, name: 'レンジフード・換気扇クリーニング', tax: 19800, unit: '式',
+            options: [
+              { id: 'o15_1', name: 'コンロセット', tax: 5500, unit: '式' },
+              { id: 'o15_2', name: '食器洗い乾燥機クリーニングセット', tax: 8800, unit: '台' },
+              { id: 'o15_3', name: 'キッチンクリーニングセット', tax: 16500, unit: '式' },
+              { id: 'o15_4', name: '特殊汚れ/追加範囲（0.5㎡ごと）', tax: 3300, unit: '式' },
+              { id: 'o15_5', name: 'お掃除機能付き', tax: 6600, unit: '式' },
+              { id: 'o15_6', name: 'アイランド型', tax: 2200, unit: '式' },
+              { id: 'o15_7', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o15_8', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+          {
+            id: 16, name: 'キッチンクリーニング', tax: 19800, unit: '式',
+            options: [
+              { id: 'o16_1', name: 'コンロ焦げ付き落とし', tax: 3300, unit: '式' },
+              { id: 'o16_2', name: 'シンク鏡面仕上げ', tax: 3300, unit: '式' },
+              { id: 'o16_3', name: '魚焼きグリル（内部）', tax: 3300, unit: '式' },
+              { id: 'o16_4', name: '食器洗い機（外部）', tax: 3300, unit: '台' },
+              { id: 'o16_5', name: 'キッチン下・裏側洗浄', tax: 3300, unit: '式' },
+              { id: 'o16_6', name: 'レンジフード（換気扇）クリーニングセット', tax: 15400, unit: '式' },
+              { id: 'o16_7', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o16_8', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+          { id: 17, name: '冷蔵庫クリーニング', tax: 11000, unit: '台' },
+          { id: 18, name: '食器洗い乾燥機クリーニング', tax: 11000, unit: '式' },
+        ]
+      },
+      {
+        cat: 'お部屋', icon: '��', items: [
+          {
+            id: 19, name: 'フローリング洗浄ワックス（10帖以下一律料金）', tax: 13200, unit: '式',
+            options: [
+              { id: 'o19_1', name: 'ワックス剥離（ハクリ）10帖以下', tax: 33000, unit: '式' },
+              { id: 'o19_2', name: '追加1帖', tax: 1320, unit: '帖' },
+              { id: 'o19_3', name: '給気口クリーニング', tax: 2200, unit: '台' },
+              { id: 'o19_4', name: '給気口クリーニング フィルター交換付き', tax: 2750, unit: '台' },
+            ]
+          },
+          {
+            id: 20, name: 'ソファ・椅子クリーニング（通常2人掛け）', tax: 11000, unit: '台',
+            options: [
+              { id: 'o20_1', name: '防汚コート', tax: 3300, unit: '台' },
+              { id: 'o20_2', name: '1人掛け', tax: 5500, unit: '台' },
+              { id: 'o20_3', name: '1人掛け（オットマン）', tax: 3300, unit: '台' },
+              { id: 'o20_4', name: '3人掛け', tax: 16500, unit: '台' },
+            ]
+          },
+          {
+            id: 22, name: 'ガラス・サッシクリーニング', tax: 11000, unit: '式',
+            options: [
+              { id: 'o22_1', name: '網戸1枚', tax: 550, unit: '枚' },
+              { id: 'o22_2', name: '雨戸1枚', tax: 1100, unit: '枚' },
+              { id: 'o22_3', name: 'サッシ追加（1㎡ごと）', tax: 1100, unit: '㎡' },
+            ]
+          },
+          {
+            id: 23, name: '壁紙染色（20㎡以下一律料金）', tax: 24200, unit: '式',
+            options: [
+              { id: 'o23_1', name: '追加1㎡', tax: 1210, unit: '㎡' },
+              { id: 'o23_2', name: '消臭・抗菌コート', tax: 3300, unit: '式' },
+            ]
+          },
+          {
+            id: 24, name: '壁紙クリーニング（20㎡以下一律料金）', tax: 19800, unit: '式',
+            options: [
+              { id: 'o24_1', name: '追加1㎡', tax: 990, unit: '㎡' },
+            ]
+          },
+          { id: 25, name: 'カーペットクリーニング（10帖以下一律料金）', tax: 16500, unit: '式' },
+          { id: 26, name: '室内ダクトクリーニング・コーティング（2m程度まで）', tax: 16500, unit: '式' },
+          { id: 27, name: '室内ダクトクリーニング・コーティング（2m超〜4m以下）', tax: 22000, unit: '式' },
+        ]
+      },
+      {
+        cat: 'コーティング', icon: '✨', items: [
+          { id: 31, name: '浴室リニューアルコーティング', tax: 22000, unit: '式' },
+          { id: 32, name: 'キッチンリニューアルコーティング', tax: 13200, unit: '式' },
+          { id: 33, name: 'トイレリニューアルコーティング', tax: 11000, unit: '式' },
+          { id: 34, name: '洗面台リニューアルコーティング', tax: 11000, unit: '式' },
+          { id: 35, name: 'フロアコーティング（1帖あたり）', tax: 6600, unit: '帖' },
+          { id: 36, name: 'UVコーティング（1帖あたり）', tax: 9900, unit: '帖' },
+          { id: 37, name: 'フローリング補修（リペア）※5箇所', tax: 33000, unit: '式' },
+        ]
+      },
+      {
+        cat: 'その他', icon: '🔧', items: [
+          {
+            id: 38, name: '光触媒抗菌コーティング（10帖まで一律）', tax: 17600, unit: '式',
+            options: [
+              { id: 'o38_1', name: '追加1帖', tax: 1760, unit: '帖' },
+            ]
+          },
+          {
+            id: 39, name: 'ベランダ・外回り高圧洗浄', tax: 11000, unit: '式',
+            options: [
+              { id: 'o39_1', name: '追加1㎡', tax: 1100, unit: '㎡' },
+            ]
+          },
+          {
+            id: 40, name: 'お墓のお掃除', tax: 19800, unit: '基',
+            options: [
+              { id: 'o40_1', name: 'お墓のコーティング', tax: 11000, unit: '基' },
+            ]
+          },
+        ]
+      },
+    ];
+
+    let cart = {};
+
+    function fmt(n) { return '¥' + Math.round(n).toLocaleString(); }
+
+    function findItem(id) {
+      const key = String(id);
+      for (const sec of MENUS) {
+        const f = sec.items.find(i => String(i.id) === key);
+        if (f) return f;
+        for (const item of sec.items) {
+          if (item.options) {
+            const opt = item.options.find(o => String(o.id) === key);
+            if (opt) return opt;
+          }
+        }
+      }
+      return null;
+    }
+
+    function getCartPrice(item, qty) {
+      return item.tax * qty;
+    }
+
+    function calcTotals() {
+      let total = 0;
+      Object.entries(cart).forEach(([id, qty]) => {
+        const item = findItem(id);
+        if (!item) return;
+        total += item.tax * qty;
+      });
+      const pretax = Math.round(total / 1.1);
+      const tax = total - pretax;
+      return { pretax, tax, total, discount: 0 };
+    }
+
+    function renderMenus() {
+      const col = document.getElementById('menu-col');
+      col.innerHTML = '';
+      MENUS.forEach(sec => {
+        const secDiv = document.createElement('div');
+        secDiv.className = 'section';
+        secDiv.id = 'sec-' + sec.cat;
+        secDiv.innerHTML = `<div class="section-title">${sec.icon} ${sec.cat}</div>`;
+        sec.items.forEach(item => {
+          const qty = cart[item.id] || 0;
+          const hasOptions = item.options && item.options.length > 0;
+          const accItem = document.createElement('div');
+          accItem.className = 'accordion-item';
+
+          // Build options HTML
+          let optHtml = '';
+          if (hasOptions) {
+            optHtml = '<div class="options-title">■ オプションを選ぶ</div><div class="option-grid">';
+            item.options.forEach(opt => {
+              const oqty = cart[opt.id] || 0;
+              if (opt.consultation) {
+                optHtml += '<div class="option-card"><div class="option-info">'
+                  + '<div class="option-name">' + opt.name + '</div>'
+                  + '<div class="option-consult">ご相談ください</div>'
+                  + '</div></div>';
+              } else {
+                const disBtn = oqty===0 ? 'disabled' : '';
+                optHtml += '<div class="option-card"><div class="option-info">'
+                  + '<div class="option-name">' + opt.name + '</div>'
+                  + '<div class="option-price">\u00a5' + opt.tax.toLocaleString() + '<span class="option-price-sub">\uff08\u7a0e\u8fbc\uff09\uff0f' + opt.unit + '</span></div>'
+                  + '</div><div class="option-counter">'
+                  + '<button class="counter-btn" id="dec-' + opt.id + '" onclick="changeQty(\'' + opt.id + '\',-1)" ' + disBtn + ' style="width:26px;height:26px;font-size:16px;">\u2212</button>'
+                  + '<span class="counter-val" id="qty-' + opt.id + '" style="font-size:14px;min-width:20px;">' + oqty + '</span>'
+                  + '<button class="counter-btn" onclick="changeQty(\'' + opt.id + '\',1)" style="width:26px;height:26px;font-size:16px;">+</button>'
+                  + '</div></div>';
+              }
+            });
+            optHtml += '</div>';
+          }
+
+          accItem.innerHTML = `
+            <div class="accordion-header" id="acc-hdr-${item.id}" onclick="toggleAccordion(${item.id})">
+              <div class="menu-icon-placeholder">${sec.icon}</div>
+              <div class="menu-info">
+                <div class="menu-name">${item.name}</div>
+              </div>
+              <div class="accordion-toggle">+</div>
+            </div>
+            <div class="accordion-body" id="acc-body-${item.id}">
+              <div class="main-price-row">
+                ${item.campaign ? '<span class="campaign-tag">キャンペーン価格</span>' : ''}
+                <span class="main-price">¥${item.tax.toLocaleString()}</span>
+                <span class="main-price-unit">（税込）／${item.unit}</span>
+              </div>
+              ${item.note ? '<div class=\"menu-note\" style=\"margin-bottom:8px;\">' + item.note + '</div>' : ''}
+              <div class="counter" style="margin-bottom:${hasOptions?'12px':'0'};">
+                <button class="counter-btn" id="dec-${item.id}" onclick="changeQty(${item.id},-1)" ${qty===0?'disabled':''}>−</button>
+                <span class="counter-val" id="qty-${item.id}">${qty}</span>
+                <button class="counter-btn" onclick="changeQty(${item.id},1)">+</button>
+                <span style="font-size:12px;color:#666;margin-left:6px;">カートに追加</span>
+              </div>
+              ${optHtml}
+            </div>
+          `;
+          secDiv.appendChild(accItem);
+        });
+        col.appendChild(secDiv);
+      });
+    }
+
+    function toggleAccordion(id) {
+      const hdr = document.getElementById('acc-hdr-' + id);
+      const body = document.getElementById('acc-body-' + id);
+      const isOpen = hdr.classList.contains('open');
+      hdr.classList.toggle('open', !isOpen);
+      body.classList.toggle('open', !isOpen);
+    }
+
+    function changeQty(id, delta) {
+      const key = String(id);
+      const cur = cart[key] || 0;
+      const next = Math.max(0, cur + delta);
+      if (next === 0) delete cart[key]; else cart[key] = next;
+      const qEl = document.getElementById('qty-' + key);
+      const dEl = document.getElementById('dec-' + key);
+      if (qEl) qEl.textContent = next;
+      if (dEl) dEl.disabled = next === 0;
+      updateSidebar();
+    }
+
+    function updateSidebar() {
+      const count = Object.values(cart).reduce((a, b) => a + b, 0);
+      const badgeEl = document.getElementById('cart-badge');
+      if (badgeEl) badgeEl.textContent = count + '点';
+      const goCartBtn = document.getElementById('go-cart-btn');
+      if (goCartBtn) goCartBtn.disabled = count === 0;
+      const { total } = calcTotals();
+      const stotalEl = document.getElementById('s-total');
+      if (stotalEl) stotalEl.textContent = fmt(total);
+    }
+
+
+    function scrollToSection(cat, btn) {
+      document.querySelectorAll('.cat-icon-btn').forEach(t => t.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const el = document.getElementById('sec-' + cat);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function goToPage(n) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + n).classList.add('active');
+      document.querySelectorAll('.step-list li').forEach((li, i) => {
+        li.classList.remove('active', 'done');
+        const s = i + 1;
+        const map = { 1: 1, 2: 2, 3: 3, 4: 4 };
+        const pageToStep = { 1: 1, 2: 2, 3: 3, 4: 4 };
+        const cur = pageToStep[n];
+        if (s === cur) li.classList.add('active');
+        else if (s < cur) li.classList.add('done');
+      });
+      window.scrollTo(0, 0);
+      updateStickyCart();
+    }
+
+    function goToConfirm() {
+      const sei = document.getElementById('f-sei').value.trim();
+      const mei = document.getElementById('f-mei').value.trim();
+      const email = document.getElementById('f-email').value.trim();
+      const tel1 = document.getElementById('f-tel1').value.trim();
+      const tel2 = document.getElementById('f-tel2').value.trim();
+      const tel3 = document.getElementById('f-tel3').value.trim();
+      const pref = document.getElementById('f-pref').value;
+      const city = document.getElementById('f-city').value.trim();
+      const date = document.getElementById('f-date').value;
+      const policy = document.getElementById('f-policy').checked;
+
+      let valid = true;
+      function setErr(id, errId, show) {
+        const el = document.getElementById(id);
+        const err = document.getElementById(errId);
+        if (show) { el.classList.add('error'); err.classList.add('show'); valid = false; }
+        else { el.classList.remove('error'); err.classList.remove('show'); }
+      }
+      setErr('f-sei', 'err-sei', !sei);
+      setErr('f-mei', 'err-mei', !mei);
+      setErr('f-email', 'err-email', !email);
+      setErr('f-tel1', 'err-tel', !tel1 || !tel2 || !tel3);
+      setErr('f-pref', 'err-pref', !pref);
+      setErr('f-city', 'err-city', !city);
+      setErr('f-date', 'err-date', !date);
+
+      if (!policy) { alert('プライバシーポリシーへの同意が必要です。'); valid = false; }
+      if (!valid) return;
+
+      const gender = document.querySelector('input[name="gender"]:checked')?.value || '';
+      const seiKana = document.getElementById('f-sei-kana').value.trim();
+      const meiKana = document.getElementById('f-mei-kana').value.trim();
+      const zip1 = document.getElementById('f-zip1').value.trim();
+      const zip2 = document.getElementById('f-zip2').value.trim();
+      const addr = document.getElementById('f-addr').value.trim();
+      const apt = document.getElementById('f-apt').value.trim();
+      const time = document.getElementById('f-time').value;
+      const note = document.getElementById('f-note').value.trim();
+
+      document.getElementById('c-name').textContent = sei + ' ' + mei;
+      document.getElementById('c-kana').textContent = (seiKana || meiKana) ? (seiKana + ' ' + meiKana) : '（未入力）';
+      document.getElementById('c-gender').textContent = gender;
+      document.getElementById('c-email').textContent = email;
+      document.getElementById('c-tel').textContent = tel1 + '-' + tel2 + '-' + tel3;
+      const fullAddr = (zip1 || zip2 ? '〒' + zip1 + '-' + zip2 + ' ' : '') + pref + city + (addr ? ' ' + addr : '') + (apt ? ' ' + apt : '');
+      document.getElementById('c-addr').textContent = fullAddr;
+      const dateStr = date ? new Date(date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+      document.getElementById('c-datetime').textContent = dateStr + (time ? ' ' + time : ' 時間指定なし');
+      document.getElementById('c-note').textContent = note || '（なし）';
+
+      const menuEl = document.getElementById('c-menu-items');
+      menuEl.innerHTML = '';
+      let total = 0;
+      Object.entries(cart).forEach(([id, qty]) => {
+        const item = findItem(id);
+        if (!item) return;
+        const sub = item.tax * qty;
+        total += sub;
+        const row = document.createElement('div');
+        row.className = 'summary-row';
+        row.innerHTML = `<span>${item.name} × ${qty}${item.unit}</span><span style="font-weight:bold;color:#1a56a0;">${fmt(sub)}</span>`;
+        menuEl.appendChild(row);
+      });
+      document.getElementById('c-total').textContent = fmt(total);
+      goToPage(3);
+    }
+
+    function submitForm() {
+      const sei = document.getElementById('f-sei').value.trim();
+      const mei = document.getElementById('f-mei').value.trim();
+      const date = document.getElementById('f-date').value;
+      let total = 0;
+      let itemsHtml = '';
+      Object.entries(cart).forEach(([id, qty]) => {
+        const item = findItem(id);
+        if (!item) return;
+        const sub = item.tax * qty;
+        total += sub;
+        itemsHtml += `<tr><th>${item.name} × ${qty}${item.unit}</th><td style="text-align:right;font-weight:bold;color:#1a56a0;">${fmt(sub)}</td></tr>`;
+      });
+      const dateStr = date ? new Date(date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+      document.getElementById('complete-summary').innerHTML = `
+    <div class="confirm-box-head" style="background:#1a56a0;color:#fff;padding:10px 16px;font-size:14px;font-weight:bold;">申込み概要</div>
+    <table class="confirm-table">
+      <tr><th>お名前</th><td>${sei} ${mei} 様</td></tr>
+      <tr><th>ご希望日</th><td>${dateStr}</td></tr>
+      ${itemsHtml}
+      <tr><th>概算合計（税込）</th><td style="font-size:18px;font-weight:bold;color:#1a56a0;">${fmt(total)}</td></tr>
+    </table>
+  `;
+      goToPage(4);
+    }
+
+    function resetAll() {
+      cart = {};
+      ['f-sei', 'f-mei', 'f-sei-kana', 'f-mei-kana', 'f-email', 'f-tel1', 'f-tel2', 'f-tel3',
+        'f-zip1', 'f-zip2', 'f-city', 'f-addr', 'f-apt', 'f-date', 'f-coupon', 'f-note'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.value = '';
+        });
+      document.getElementById('f-pref').value = '長野県';
+      document.getElementById('f-time').value = '';
+      document.getElementById('f-policy').checked = false;
+      renderMenus();
+      updateSidebar();
+      updateStickyCart();
+      goToPage(1);
+    }
+
+
+    // Hide sticky cart when not on page1
+    function updateStickyCart() {
+      const isPage1 = document.getElementById('page1').classList.contains('active');
+      document.getElementById('sticky-cart').style.display = isPage1 ? 'flex' : 'none';
+    }
+
+    renderMenus();
+    updateSidebar();
+    updateStickyCart();
+  </script>
+
+  <!-- Sticky cart bar -->
+  <div class="sticky-cart" id="sticky-cart">
+    <div class="sticky-cart-info">
+      <div>🛒 お見積り内容 <strong id="cart-badge">0点</strong></div>
+      <div class="sticky-cart-total" id="s-total">¥0</div>
+    </div>
+    <button class="sticky-cart-btn" id="go-cart-btn" onclick="goToPage(2)" disabled>
+      お見積り内容（カート）確認へ ›
+    </button>
+  </div>
+
+</body>
+
+</html>
